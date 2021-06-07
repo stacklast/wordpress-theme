@@ -81,7 +81,8 @@ function sunset_theme_create_page() {
 
 function sunset_sidebar_twitter(){
     $twittter = esc_attr( get_option( 'twitter_handler' ) ) ;
-    echo '<input type="text" name="twitter_handler" value="'.$twittter.'" placeholder="Twitter Handler" />';
+    echo '<input type="text" name="twitter_handler" value="'.$twittter.'" placeholder="Twitter Handler" />
+    <p class="description" id="tagline-description">Put input without @.</p>';
 }
 function sunset_sidebar_facebook(){
     $twittter = esc_attr( get_option( 'facebook_handler' ) ) ;
