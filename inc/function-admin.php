@@ -44,12 +44,14 @@ function sunset_custom_settings() {
     
     register_setting( 'sunset-settings-group', 'first_name', 'sanitize_text_field');
     register_setting( 'sunset-settings-group', 'last_name', 'sanitize_text_field');
+    register_setting( 'sunset-settings-group', 'user_description', 'sanitize_text_field');
     register_setting( 'sunset-settings-group', 'twitter_handler', 'sunset_sanitize_twitter_handler');
     register_setting( 'sunset-settings-group', 'facebook_handler', 'sanitize_text_field');
     register_setting( 'sunset-settings-group', 'googlep_handler', 'sanitize_text_field');
 
     add_settings_section( 'sunset-sidebar-options', 'Sidebar Options', 'sunset_sidebar_options', 'custom_sunset' );
     add_settings_field( 'sidebar-name', 'Full Name', 'sunset_sidebar_name', 'custom_sunset', 'sunset-sidebar-options' );
+    add_settings_field( 'sidebar-description', 'Description', 'sunset_sidebar_description', 'custom_sunset', 'sunset-sidebar-options' );
     add_settings_field( 'sidebar-twitter', 'Twitter Handler', 'sunset_sidebar_twitter', 'custom_sunset', 'sunset-sidebar-options' );
     add_settings_field( 'sidebar-facebook', 'Facebook Handler', 'sunset_sidebar_facebook', 'custom_sunset', 'sunset-sidebar-options' );
     add_settings_field( 'sidebar-googlep', 'Google+ Handler', 'sunset_sidebar_googlep', 'custom_sunset', 'sunset-sidebar-options' );
@@ -64,6 +66,11 @@ function sunset_sidebar_name(){
     $lastName = esc_attr( get_option( 'last_name' ) ) ;
     echo '<input type="text" name="first_name" value="'.$firstName.'" placeholder="First Name" />';
     echo '<input type="text" name="last_name" value="'.$lastName.'" placeholder="Last Name" />';
+}
+function sunset_sidebar_description(){
+    $description = esc_attr( get_option( 'user_description' ) ) ;
+    echo '<input type="text" name="user_description" value="'.$description.'" placeholder="Descripcion" />
+    <p class="description">Write something smart.</p>';
 }
 
 /*
@@ -85,12 +92,12 @@ function sunset_sidebar_twitter(){
     <p class="description" id="tagline-description">Put input without @.</p>';
 }
 function sunset_sidebar_facebook(){
-    $twittter = esc_attr( get_option( 'facebook_handler' ) ) ;
-    echo '<input type="text" name="facebook_handler" value="'.$twittter.'" placeholder="Facebook Handler" />';
+    $facebook = esc_attr( get_option( 'facebook_handler' ) ) ;
+    echo '<input type="text" name="facebook_handler" value="'.$facebook.'" placeholder="Facebook Handler" />';
 }
 function sunset_sidebar_googlep(){
-    $twittter = esc_attr( get_option( 'googlep_handler' ) ) ;
-    echo '<input type="text" name="googlep_handler" value="'.$twittter.'" placeholder="Google+ Handler" />';
+    $googlep = esc_attr( get_option( 'googlep_handler' ) ) ;
+    echo '<input type="text" name="googlep_handler" value="'.$googlep.'" placeholder="Google+ Handler" />';
 }
 
 function sunset_theme_settings_page() {
